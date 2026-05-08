@@ -1,0 +1,78 @@
+{{> layout/header}}
+<div class="flex-grow-1">
+    <div class="page-wrapper">
+
+        <!-- 게시글 카드 -->
+        <div class="card mb-4">
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-3">{{board.title}}</h3>
+                <div class="d-flex align-items-center text-muted small mb-4 pb-3 border-bottom">
+                    <span class="badge bg-secondary me-2"><i class="fa-solid fa-user fa-xs me-1"></i>{{board.username}}</span>
+                </div>
+                <div class="lh-lg text-dark" style="min-height: 120px; white-space: pre-wrap;">{{board.content}}</div>
+            </div>
+            <div class="card-footer bg-white border-top d-flex justify-content-end gap-2 py-3">
+                <a href="/board/{{board.id}}/update-form" class="btn btn-sm btn-outline-warning">
+                    <i class="fa-solid fa-pen-to-square me-1"></i>수정
+                </a>
+                <form action="/board/{{board.id}}/delete" method="post" class="m-0">
+                    <button class="btn btn-sm btn-outline-danger">
+                        <i class="fa-solid fa-trash-can me-1"></i>삭제
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 댓글 카드 -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-comments me-2 text-primary"></i>댓글
+            </div>
+
+            <!-- 댓글 작성 -->
+            <div class="card-body border-bottom">
+                <form action="/reply/save" method="post">
+                    <textarea class="form-control mb-2" rows="2" name="comment" placeholder="댓글을 입력하세요"></textarea>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-paper-plane me-1"></i>댓글등록</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 댓글 목록 -->
+            <div class="list-group list-group-flush">
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-primary rounded-pill">cos</span>
+                        <span class="text-dark small">댓글 내용입니다</span>
+                    </div>
+                    <form action="/reply/1/delete" method="post" class="m-0">
+                        <button class="btn btn-sm btn-light text-muted">
+                            <i class="fa-solid fa-trash-can fa-xs"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-primary rounded-pill">ssar</span>
+                        <span class="text-dark small">댓글 내용입니다</span>
+                    </div>
+                    <form action="/reply/1/delete" method="post" class="m-0">
+                        <button class="btn btn-sm btn-light text-muted">
+                            <i class="fa-solid fa-trash-can fa-xs"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <a href="/board/list" class="btn btn-outline-secondary btn-sm">
+                <i class="fa-solid fa-arrow-left me-1"></i>목록으로
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{{> layout/footer}}

@@ -1,0 +1,34 @@
+{{> layout/header}}
+<div class="flex-grow-1">
+    <div class="page-wrapper">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h5 class="fw-bold mb-0"><i class="fa-solid fa-newspaper me-2 text-primary"></i>전체 게시글</h5>
+            <a href="/board/save-form" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen me-1"></i>글쓰기</a>
+        </div>
+
+        {{#boardList}}
+        <div class="card mb-3 board-card">
+            <div class="card-body py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="flex-grow-1 me-3">
+                        <h6 class="fw-semibold mb-1 text-dark">{{title}}</h6>
+                        <small class="text-muted">
+                            <i class="fa-solid fa-user fa-xs me-1"></i>{{username}}
+                            <span class="mx-1">·</span>
+                            <i class="fa-regular fa-clock fa-xs me-1"></i>{{createdAt}}
+                        </small>
+                    </div>
+                    <a href="/board/{{id}}" class="btn btn-outline-primary btn-sm flex-shrink-0">상세보기</a>
+                </div>
+            </div>
+        </div>
+        {{/boardList}}
+
+        <ul class="pagination d-flex justify-content-center mt-4 gap-1">
+            <li class="page-item"><a href="" class="page-link px-3"><i class="fa-solid fa-chevron-left fa-xs me-1"></i>Previous</a></li>
+            <li class="page-item"><a href="" class="page-link px-3">Next<i class="fa-solid fa-chevron-right fa-xs ms-1"></i></a></li>
+        </ul>
+    </div>
+</div>
+
+{{> layout/footer}}
